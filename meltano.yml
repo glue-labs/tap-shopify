@@ -16,9 +16,9 @@ plugins:
     settings:
     - name: access_token
       kind: password
-    - name: store
+    - name: store_domain
+    - name: store_id
     - name: start_date
-    - name: admin_url
     - name: is_plus_account
       kind: boolean
     config:

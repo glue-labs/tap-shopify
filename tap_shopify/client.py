@@ -19,9 +19,7 @@ class tap_shopifyStream(RESTStream):
     @property
     def url_base(self) -> str:
         """Return the API URL root, configurable via tap settings."""
-        url_base = self.config.get(
-            "admin_url"
-        ) or "https://{store}.myshopify.com/admin".format(store=self.config["store"])
+        url_base = "{store_domain}/admin".format(store_domain=self.config["store_domain"])
 
         return f"{url_base}/api/{API_VERSION}"
 
@@ -80,6 +78,8 @@ class tap_shopifyStream(RESTStream):
         return params
 
     def post_process(self, row: dict, context: Optional[dict] = None):
+        row["store_id"] = self.config.get('store_id')
+
         """Deduplicate rows by id or updated_at."""
         if not self.replication_key:
             return row
