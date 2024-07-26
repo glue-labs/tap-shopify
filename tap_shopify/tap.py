@@ -49,25 +49,25 @@ class Tap_Shopify(Tap):
             description="The access token to authenticate with the Shopify API",
         ),
         th.Property(
-            "store",
+            "store_domain",
             th.StringType,
             required=True,
             description=(
-                "Shopify store id, use the prefix of your admin url "
-                + "e.g. https://[your store].myshopify.com/admin"
+                "Shopify store domain"
+            ),
+        ),
+        th.Property(
+            "store_id",
+            th.StringType,
+            required=True,
+            description=(
+                "Shopify store id"
             ),
         ),
         th.Property(
             "start_date",
             th.DateTimeType,
             description="The earliest record date to sync",
-        ),
-        th.Property(
-            "admin_url",
-            th.StringType,
-            description=(
-                "The Admin url for your Shopify store " + "(overrides 'store' property)"
-            ),
         ),
         th.Property(
             "is_plus_account",
