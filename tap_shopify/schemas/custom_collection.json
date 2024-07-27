@@ -59,7 +59,7 @@
         },
         "id": {
             "type": [
-                "integer",
+                "string",
                 "null"
             ]
         },
