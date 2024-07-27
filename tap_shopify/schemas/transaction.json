@@ -77,7 +77,7 @@
         },
         "id": {
             "type": [
-                "string",
+                "number",
                 "null"
             ]
         },"shopify_id": {
