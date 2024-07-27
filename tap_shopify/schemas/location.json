@@ -51,6 +51,11 @@
                 "string",
                 "null"
             ]
+        },"shopify_id": {
+            "type": [
+                "number",
+                "null"
+            ]
         },
         "legacy": {
             "type": "boolean"

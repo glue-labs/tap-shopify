@@ -12,6 +12,11 @@
                 "string",
                 "null"
             ]
+        },"shopify_id": {
+            "type": [
+                "number",
+                "null"
+            ]
         },
         "email": {
             "type": [

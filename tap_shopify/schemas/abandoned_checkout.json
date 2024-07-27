@@ -296,6 +296,11 @@
                 "string",
                 "null"
             ]
+        },"shopify_id": {
+            "type": [
+                "number",
+                "null"
+            ]
         },
         "landing_site": {
             "type": [

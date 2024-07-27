@@ -25,6 +25,12 @@
                 "null"
             ]
         },
+        "shopify_id": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
         "position": {
             "type": [
                 "integer",

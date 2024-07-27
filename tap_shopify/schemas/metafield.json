@@ -24,6 +24,11 @@
                 "string",
                 "null"
             ]
+        },"shopify_id": {
+            "type": [
+                "number",
+                "null"
+            ]
         },
         "key": {
             "type": [
