@@ -87,7 +87,7 @@ class InventoryLevelsStream(tap_shopifyStream):
     name = "inventory_levels"
     path = "/inventory_levels.json"
     records_jsonpath = "$.inventory_levels[*]"
-    primary_keys = ["inventory_item_id", "store"]
+    primary_keys = ["inventory_item_id", "store_id"]
     schema_filepath = SCHEMAS_DIR / "inventory_level.json"
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
