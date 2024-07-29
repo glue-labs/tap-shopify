@@ -6,6 +6,10 @@
             "type": [
                 "string"
             ]
+        },"xg_id": {
+            "type": [
+                "string"
+            ]
         },
         "amount": {
             "type": [
