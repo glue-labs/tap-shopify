@@ -6,7 +6,7 @@ from urllib.parse import parse_qsl, urlsplit
 
 import requests
 from singer_sdk.streams import RESTStream
-from uuid import uuid4
+import uuid
 
 from tap_shopify.auth import tap_shopifyAuthenticator
 
@@ -82,7 +82,9 @@ class tap_shopifyStream(RESTStream):
 
     def post_process(self, row: dict, context: Optional[dict] = None):
         row["store_id"] = self.config.get("store_id")
-        row["xg_id"] = str(uuid4())
+        row["xg_id"] = str(
+            uuid.uuid5(uuid.NAMESPACE_URL, f"{row['store_id']}/{row['id']}")
+        )
 
         """Deduplicate rows by id or updated_at."""
         if not self.replication_key:
