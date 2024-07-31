@@ -60,11 +60,6 @@
                 "number",
                 "null"
             ]
-        },"shopify_id": {
-            "type": [
-                "number",
-                "null"
-            ]
         },
         "province_code_of_origin": {
             "type": [

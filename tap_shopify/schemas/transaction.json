@@ -84,11 +84,6 @@
                 "number",
                 "null"
             ]
-        },"shopify_id": {
-            "type": [
-                "number",
-                "null"
-            ]
         },
         "kind": {
             "type": [

@@ -66,11 +66,6 @@
                 "number",
                 "null"
             ]
-        },"shopify_id": {
-            "type": [
-                "number",
-                "null"
-            ]
         },
         "published": {
             "type": "boolean"
