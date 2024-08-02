@@ -6,10 +6,6 @@
             "type": [
                 "string"
             ]
-        },"xg_id": {
-            "type": [
-                "string"
-            ]
         },
         "available": {
             "type": [
@@ -19,7 +15,7 @@
         },
         "inventory_item_id": {
             "type": [
-                "number",
+                "string",
                 "null"
             ]
         },

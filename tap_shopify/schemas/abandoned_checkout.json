@@ -6,7 +6,7 @@
             "type": [
                 "string"
             ]
-        },"xg_id": {
+        },"shopify_id": {
             "type": [
                 "string"
             ]
@@ -297,7 +297,7 @@
         },
         "id": {
             "type": [
-                "number",
+                "string",
                 "null"
             ]
         },
