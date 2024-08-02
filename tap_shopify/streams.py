@@ -76,7 +76,7 @@ class LocationsStream(tap_shopifyStream):
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
         """Return a context dictionary for child streams."""
-        return {"location_id": record["id"]}
+        return {"location_id": record["shopify_id"]}
 
 
 class InventoryLevelsStream(tap_shopifyStream):
@@ -92,7 +92,7 @@ class InventoryLevelsStream(tap_shopifyStream):
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
         """Return a context dictionary for child streams."""
-        return {"inventory_item_id": record["inventory_item_id"]}
+        return {"inventory_item_id": record["shopify_inventory_item_id"]}
 
     def get_url_params(self, context, next_page_token):
         """Return a dictionary of values to be used in URL parameterization."""
@@ -148,7 +148,7 @@ class OrdersStream(tap_shopifyStream):
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
         """Return a context dictionary for child streams."""
-        return {"order_id": record["id"]}
+        return {"order_id": record["shopify_id"]}
 
     def get_url_params(self, context, next_page_token):
         """Return a dictionary of values to be used in URL parameterization."""
