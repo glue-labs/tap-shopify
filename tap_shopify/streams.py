@@ -15,8 +15,8 @@ class AbandonedCheckouts(tap_shopifyStream):
     name = "abandoned_checkouts"
     path = "/checkouts.json"
     records_jsonpath = "$.checkouts[*]"
-    primary_keys = ["id", "store_id"]
-    replication_key = "updated_at"
+    primary_keys = ["id"]
+    # replication_key = "updated_at"
     schema_filepath = SCHEMAS_DIR / "abandoned_checkout.json"
 
 
@@ -26,8 +26,8 @@ class CollectStream(tap_shopifyStream):
     name = "collects"
     path = "/collects.json"
     records_jsonpath = "$.collects[*]"
-    primary_keys = ["id", "store_id"]
-    replication_key = "id"
+    primary_keys = ["id"]
+    # replication_key = "id"
     schema_filepath = SCHEMAS_DIR / "collect.json"
 
     def get_url_params(self, context, next_page_token):
@@ -49,8 +49,8 @@ class CustomCollections(tap_shopifyStream):
     name = "custom_collections"
     path = "/custom_collections.json"
     records_jsonpath = "$.custom_collections[*]"
-    primary_keys = ["id", "store_id"]
-    replication_key = "updated_at"
+    primary_keys = ["id"]
+    # replication_key = "updated_at"
     schema_filepath = SCHEMAS_DIR / "custom_collection.json"
 
 
@@ -60,8 +60,8 @@ class CustomersStream(tap_shopifyStream):
     name = "customers"
     path = "/customers.json"
     records_jsonpath = "$.customers[*]"
-    primary_keys = ["id", "store_id"]
-    replication_key = "updated_at"
+    primary_keys = ["id"]
+    # replication_key = "updated_at"
     schema_filepath = SCHEMAS_DIR / "customer.json"
 
 
@@ -71,7 +71,7 @@ class LocationsStream(tap_shopifyStream):
     name = "locations"
     path = "/locations.json"
     records_jsonpath = "$.locations[*]"
-    primary_keys = ["id", "store_id"]
+    primary_keys = ["id"]
     schema_filepath = SCHEMAS_DIR / "location.json"
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
@@ -87,7 +87,7 @@ class InventoryLevelsStream(tap_shopifyStream):
     name = "inventory_levels"
     path = "/inventory_levels.json"
     records_jsonpath = "$.inventory_levels[*]"
-    primary_keys = ["inventory_item_id", "store_id"]
+    primary_keys = ["inventory_item_id"]
     schema_filepath = SCHEMAS_DIR / "inventory_level.json"
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
@@ -112,7 +112,7 @@ class InventoryItemsStream(tap_shopifyStream):
     name = "inventory_items"
     path = "/inventory_items/{inventory_item_id}.json"
     records_jsonpath = "$.inventory_item"
-    primary_keys = ["id", "store_id"]
+    primary_keys = ["id"]
     schema_filepath = SCHEMAS_DIR / "inventory_item.json"
 
 
@@ -122,8 +122,8 @@ class MetafieldsStream(tap_shopifyStream):
     name = "metafields"
     path = "/metafields.json"
     records_jsonpath = "$.metafields[*]"
-    primary_keys = ["id", "store_id"]
-    replication_key = "updated_at"
+    primary_keys = ["id"]
+    # replication_key = "updated_at"
     schema_filepath = SCHEMAS_DIR / "metafield.json"
 
 
@@ -133,8 +133,8 @@ class OrdersStream(tap_shopifyStream):
     name = "orders"
     path = "/orders.json"
     records_jsonpath = "$.orders[*]"
-    primary_keys = ["id", "store_id"]
-    replication_key = "updated_at"
+    primary_keys = ["id"]
+    # replication_key = "updated_at"
     schema_filepath = SCHEMAS_DIR / "order.json"
 
     def post_process(self, row: dict, context: Optional[dict] = None):
@@ -166,8 +166,8 @@ class ProductsStream(tap_shopifyStream):
     name = "products"
     path = "/products.json"
     records_jsonpath = "$.products[*]"
-    primary_keys = ["id", "store_id"]
-    replication_key = "updated_at"
+    primary_keys = ["id"]
+    # replication_key = "updated_at"
     schema_filepath = SCHEMAS_DIR / "product.json"
 
 
@@ -179,7 +179,7 @@ class TransactionsStream(tap_shopifyStream):
     name = "transactions"
     path = "/orders/{order_id}/transactions.json"
     records_jsonpath = "$.transactions[*]"
-    primary_keys = ["id", "store_id"]
+    primary_keys = ["id"]
     schema_filepath = SCHEMAS_DIR / "transaction.json"
 
 
@@ -189,5 +189,5 @@ class UsersStream(tap_shopifyStream):
     name = "users"
     path = "/users.json"
     records_jsonpath = "$.users[*]"
-    primary_keys = ["id", "store_id"]
+    primary_keys = ["id"]
     schema_filepath = SCHEMAS_DIR / "user.json"

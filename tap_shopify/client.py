@@ -83,17 +83,17 @@ class tap_shopifyStream(RESTStream):
     def post_process(self, row: dict, context: Optional[dict] = None):
         row["store_id"] = self.config.get("store_id")
         if "id" in row:
-            row["xg_id"] = str(
+            row["shopify_id"] = row["id"]
+            row["id"] = str(
                 uuid.uuid5(uuid.NAMESPACE_URL, f"{row['store_id']}/{row['id']}")
             )
         elif "inventory_item_id" in row:
-            row["xg_id"] = str(
+            row["shopify_inventory_item_id"] = row["inventory_item_id"]
+            row["inventory_item_id"] = str(
                 uuid.uuid5(
                     uuid.NAMESPACE_URL, f"{row['store_id']}/{row['inventory_item_id']}"
                 )
             )
-        else:
-            row["xg_id"] = str(uuid.uuid4())
         """Deduplicate rows by id or updated_at."""
         if not self.replication_key:
             return row
