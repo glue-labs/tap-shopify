@@ -64,9 +64,9 @@ class tap_shopifyStream(RESTStream):
     ) -> Dict[str, Any]:
         """Return a dictionary of values to be used in URL parameterization."""
         params: dict = {}
-
+        
         if next_page_token:
-            print('get_url_params next page', params)
+            self.metrics_logger.info('get_url_params next page')
             return dict(parse_qsl(urlsplit(next_page_token).query))
 
         context_state = self.get_context_state(context)
@@ -78,7 +78,7 @@ class tap_shopifyStream(RESTStream):
             params["updated_at_min"] = last_updated
         elif start_date:
             params["created_at_min"] = start_date
-        print('get_url_params', params)
+        self.metrics_logger.info('get_url_params: %s', params)
         return params
 
     def post_process(self, row: dict, context: Optional[dict] = None):
