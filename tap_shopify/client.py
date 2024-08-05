@@ -14,6 +14,12 @@ SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 API_VERSION = "2023-10"
 
 
+def generate_xg_id(store_id: str, entity_name: str, entity_id: str):
+    return str(
+        uuid.uuid5(uuid.NAMESPACE_URL, f"xg://{store_id}/{entity_name}/{entity_id}")
+    )
+
+
 class tap_shopifyStream(RESTStream):
     """tap_shopify stream class."""
 
@@ -64,9 +70,9 @@ class tap_shopifyStream(RESTStream):
     ) -> Dict[str, Any]:
         """Return a dictionary of values to be used in URL parameterization."""
         params: dict = {}
-        
+
         if next_page_token:
-            self.metrics_logger.info('get_url_params next page')
+            self.metrics_logger.info("get_url_params next page")
             return dict(parse_qsl(urlsplit(next_page_token).query))
 
         context_state = self.get_context_state(context)
@@ -78,22 +84,20 @@ class tap_shopifyStream(RESTStream):
             params["updated_at_min"] = last_updated
         elif start_date:
             params["created_at_min"] = start_date
-        self.metrics_logger.info('get_url_params: %s', params)
+        self.metrics_logger.info("get_url_params: %s", params)
         return params
 
     def post_process(self, row: dict, context: Optional[dict] = None):
         row["store_id"] = self.config.get("store_id")
+        self.metrics_logger.info("stream name: %s", self.name)
         if "id" in row:
             row["shopify_id"] = row["id"]
-            row["id"] = str(
-                uuid.uuid5(uuid.NAMESPACE_URL, f"{row['store_id']}/{row['id']}")
-            )
+            self.str
+            row["id"] = generate_xg_id(row["store_id"], self.name, row["id"])
         elif "inventory_item_id" in row:
             row["shopify_inventory_item_id"] = row["inventory_item_id"]
-            row["inventory_item_id"] = str(
-                uuid.uuid5(
-                    uuid.NAMESPACE_URL, f"{row['store_id']}/{row['inventory_item_id']}"
-                )
+            row["inventory_item_id"] = generate_xg_id(
+                row["store_id"], self.name, row["inventory_item_id"]
             )
         """Deduplicate rows by id or updated_at."""
         if not self.replication_key:
