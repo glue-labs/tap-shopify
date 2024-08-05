@@ -92,7 +92,6 @@ class tap_shopifyStream(RESTStream):
         self.metrics_logger.info("stream name: %s", self.name)
         if "id" in row:
             row["shopify_id"] = row["id"]
-            self.str
             row["id"] = generate_xg_id(row["store_id"], self.name, row["id"])
         elif "inventory_item_id" in row:
             row["shopify_inventory_item_id"] = row["inventory_item_id"]
