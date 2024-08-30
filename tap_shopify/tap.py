@@ -65,6 +65,14 @@ class Tap_Shopify(Tap):
             ),
         ),
         th.Property(
+            "org_id",
+            th.StringType,
+            required=True,
+            description=(
+                "Shopify org id"
+            ),
+        ),
+        th.Property(
             "start_date",
             th.DateTimeType,
             description="The earliest record date to sync",

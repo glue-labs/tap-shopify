@@ -89,6 +89,7 @@ class tap_shopifyStream(RESTStream):
 
     def post_process(self, row: dict, context: Optional[dict] = None):
         row["store_id"] = self.config.get("store_id")
+        row["org_id"] = self.config.get("org_id")
         self.metrics_logger.info("stream name: %s", self.name)
         if "id" in row:
             row["shopify_id"] = row["id"]

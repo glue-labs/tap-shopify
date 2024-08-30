@@ -18,6 +18,7 @@ plugins:
       kind: password
     - name: store_domain
     - name: store_id
+    - name: org_id
     - name: start_date
     - name: is_plus_account
       kind: boolean

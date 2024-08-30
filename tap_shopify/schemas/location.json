@@ -6,6 +6,10 @@
             "type": [
                 "string"
             ]
+        }, "org_id": {
+            "type": [
+                "string"
+            ]
         },"shopify_id": {
             "type": [
                 "number"
